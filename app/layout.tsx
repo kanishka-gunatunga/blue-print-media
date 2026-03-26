@@ -17,6 +17,9 @@ const libreBaskerville = Libre_Baskerville({
 export const metadata: Metadata = {
   title: "Blueprint Media",
   description: "The Architecture of Excellence.",
+  icons: {
+    icon: "/blue-print-logo.png",
+  },
 };
 
 export default function RootLayout({
