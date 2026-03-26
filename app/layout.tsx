@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Blueprint Media",
   description: "The Architecture of Excellence.",
   icons: {
-    icon: "/blue-print-logo.png",
+    icon: "/logo.svg",
   },
 };
 
