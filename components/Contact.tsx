@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { MapPin, MessageSquare, Share2, ChevronDown } from 'lucide-react';
+import { MapPin, Share2, ChevronDown, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const ContactInfoCard = ({
@@ -85,7 +85,6 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative w-full bg-white py-24 font-inter overflow-hidden">
-      {/* Background Grid */}
       <div
         className="absolute inset-0 z-0 opacity-100 pointer-events-none"
         style={{
@@ -127,7 +126,7 @@ export default function Contact() {
                 Yakkala, Sri Lanka
               </ContactInfoCard>
 
-              <ContactInfoCard icon={MessageSquare} title="Contact">
+              <ContactInfoCard icon={Phone} title="Contact">
                 +94 70 707 6991
               </ContactInfoCard>
             </div>
@@ -160,11 +159,11 @@ export default function Contact() {
               </div>
             </ContactInfoCard>
           </div>
-          {/* Right Column: Contact Form */}
+
           <div className="flex flex-col w-full max-w-[617px] gap-6 pt-4 lg:pt-0">
             <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full">
-                {/* Name */}
+
                 <div className="flex flex-col w-full border-b border-black/20 pb-2">
                   <input
                     type="text"
@@ -178,7 +177,6 @@ export default function Contact() {
                   />
                 </div>
 
-                {/* Email */}
                 <div className="flex flex-col w-full border-b border-black/20 pb-2">
                   <input
                     type="email"
@@ -193,7 +191,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Service */}
               <div className="flex flex-col w-full border-b border-black/20 pb-2 mt-4 relative">
                 <select
                   name="service"
@@ -213,7 +210,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Message */}
               <div className="flex flex-col w-full border-b border-black/20 pb-2 mt-4">
                 <textarea
                   name="message"
@@ -226,7 +222,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Status Message */}
               {status === 'success' && (
                 <p className="text-green-600 font-medium">Message sent successfully!</p>
               )}
@@ -234,7 +229,6 @@ export default function Contact() {
                 <p className="text-red-500 font-medium">{errorMessage}</p>
               )}
 
-              {/* Submit Button */}
               <div className="flex justify-start sm:justify-end mt-2">
                 <button
                   type="submit"

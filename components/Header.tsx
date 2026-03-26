@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, MapPin, Menu, X } from "lucide-react";
+import { MapPin, Menu, Phone, X } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -18,11 +18,11 @@ export default function Header() {
 
   return (
     <header className="absolute top-0 left-0 w-full z-50 flex flex-col font-inter">
-      {/* Top Bar */}
+
       <div className="w-full bg-[#070030] text-white py-2 flex flex-col sm:flex-row items-center justify-center sm:justify-end px-4 sm:px-6 lg:px-[123px] font-medium text-[12px] sm:text-[14px] md:text-base gap-1 sm:gap-6 tracking-wide">
         <div className="flex items-center gap-2">
-          <Mail size={14} className="sm:w-4 sm:h-4 text-white" />
-          <span>contact@northway.co.uk</span>
+          <Phone size={14} className="sm:w-4 sm:h-4 text-white" />
+          <span>+94 70 707 6991</span>
         </div>
         <div className="flex items-center gap-2">
           <MapPin size={14} className="sm:w-4 sm:h-4 text-white" />
@@ -31,9 +31,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main Navbar */}
       <div className="w-full py-4 px-4 sm:px-6 lg:px-[123px] flex items-center justify-between bg-white/10 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none transition-all">
-        {/* Logo */}
         <Link href="#home" className="flex-shrink-0 z-50">
           <Image
             src="/blue-print-logo.png"
@@ -45,7 +43,6 @@ export default function Header() {
           />
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="hidden xl:flex items-center gap-8">
           {navItems.map((item) => (
             <Link
@@ -58,7 +55,6 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Desktop Contact Button */}
         <div className="hidden xl:flex">
           <Link
             href="#contact"
@@ -68,7 +64,6 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Mobile Hamburger Button */}
         <button
           className="xl:hidden z-50 p-2 text-black transition-transform duration-300"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -78,7 +73,6 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       <div
         className={`absolute top-full left-0 w-full bg-white shadow-xl flex flex-col xl:hidden transition-all duration-300 ease-in-out origin-top border-t border-gray-100 ${isMobileMenuOpen ? "scale-y-100 opacity-100 pointer-events-auto" : "scale-y-0 opacity-0 pointer-events-none"
           }`}
