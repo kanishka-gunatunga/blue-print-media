@@ -242,11 +242,11 @@ export default function Services() {
             }}
             breakpoints={{
               320: {
-                slidesPerView: 1.1,
+                slidesPerView: 1,
                 spaceBetween: 20,
               },
               768: {
-                slidesPerView: 2.1,
+                slidesPerView: 2,
                 spaceBetween: 30,
               },
               1200: {
@@ -316,7 +316,7 @@ function ServiceCard({ service }: { service: Service }) {
           className="absolute top-0 left-0 w-full h-auto z-0"
         />
 
-        <div className="p-8 pr-12 h-full flex flex-col relative z-20">
+        <div className="p-8 pr-6 md:pr-12 h-full flex flex-col relative z-20">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-[45px] h-[45px] relative flex-shrink-0 flex items-center justify-center">
               <Image
@@ -327,7 +327,7 @@ function ServiceCard({ service }: { service: Service }) {
                 className="object-contain"
               />
             </div>
-            <h3 className="font-inter font-semibold break-words text-[20px] md:text-[21px] text-[#070030] leading-[1.5]">
+            <h3 className="font-inter font-semibold md:break-words text-[20px] md:text-[21px] text-[#070030] leading-[1.5]">
               {service.title}
             </h3>
           </div>
