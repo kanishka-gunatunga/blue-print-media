@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { MapPin, Share2, ChevronDown, Phone } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 const ContactInfoCard = ({
   icon: Icon,
@@ -9,7 +9,7 @@ const ContactInfoCard = ({
   children,
   className = ""
 }: {
-  icon: any,
+  icon: React.ElementType,
   title: string,
   children: React.ReactNode,
   className?: string
@@ -42,6 +42,26 @@ const ContactInfoCard = ({
 };
 
 export default function Contact() {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -77,9 +97,10 @@ export default function Contact() {
       setFormData({ name: '', email: '', service: '', message: '' });
 
       setTimeout(() => setStatus('idle'), 5000);
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus('error');
-      setErrorMessage(err.message || 'An error occurred. Please try again later.');
+      const message = err instanceof Error ? err.message : 'An error occurred. Please try again later.';
+      setErrorMessage(message);
     }
   };
 
@@ -96,14 +117,14 @@ export default function Contact() {
       />
 
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
         className="max-w-[1440px] mx-auto px-6 lg:px-[123px] relative z-10"
       >
 
-        <div className="flex flex-col items-center gap-7 w-full max-w-[791px] mx-auto mb-16">
+        <motion.div variants={itemVariants} className="flex flex-col items-center gap-7 w-full max-w-[791px] mx-auto mb-16">
           <div className="flex flex-row justify-center items-center px-[50px] py-[5px] border border-[#0E519D] rounded-[50px] h-[58px]">
             <span className="font-inter font-medium text-[21px] text-black">
               • Get in Touch With Us •
@@ -115,11 +136,11 @@ export default function Contact() {
           <p className="font-inter font-normal text-[18px] md:text-[20px] leading-[31px] text-center text-black/60">
             Ready to elevate your brand or institution with premium design and printing solutions? Get in touch with us today.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-[100px] mt-12">
 
-          <div className="flex flex-col gap-6 w-full max-w-[650px]">
+          <motion.div variants={itemVariants} className="flex flex-col gap-6 w-full max-w-[650px]">
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
               <ContactInfoCard icon={MapPin} title="Address">
@@ -158,9 +179,9 @@ export default function Contact() {
                 </div>
               </div>
             </ContactInfoCard>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col w-full max-w-[617px] gap-6 pt-4 lg:pt-0">
+          <motion.div variants={itemVariants} className="flex flex-col w-full max-w-[617px] gap-6 pt-4 lg:pt-0">
             <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full">
 
@@ -239,7 +260,7 @@ export default function Contact() {
                 </button>
               </div>
             </form>
-          </div>
+          </motion.div>
 
         </div>
       </motion.div>

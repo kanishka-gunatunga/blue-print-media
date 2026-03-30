@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const slides = [
   {
     id: 1,
-    image: "/slider-1.png",
+    image: "/slider-3.png",
     title: "The Architecture of",
     subtitle: "Excellence.",
     description: "At Blueprint Media, we specialize in crafting high-quality academic scrolls, certificates, and institutional branding solutions"
@@ -52,15 +52,12 @@ export default function Hero() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Gradient Overlays */}
+
       <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(102,115,152,0.9)_0%,rgba(166,189,249,0.6)_50%,rgba(0,0,0,0)_100%)] pointer-events-none" />
 
-      {/* Optional Radial overlay for extra pop based on design */}
       <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_20%_50%,rgba(0,174,239,0.15)_0%,rgba(115,115,115,0)_60%)] pointer-events-none" />
 
-      {/* Social Bar & Content Container */}
       <div className="absolute inset-0 z-20 flex">
-        {/* Left Social Sidebar */}
         <div className="w-[72px] h-full bg-[#FFFFFF66] backdrop-blur-sm hidden md:flex flex-col items-center justify-center relative">
           <div className="flex flex-col gap-7 absolute top-1/2 -translate-y-1/2">
             {[
@@ -135,7 +132,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Main Content */}
         <div className="flex-1 flex flex-col justify-center px-6 lg:pl-[51px] max-w-7xl w-full mx-auto overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
@@ -155,7 +151,7 @@ export default function Hero() {
                 </h2>
               </div>
 
-              {/* Divider */}
+
               <div className="w-full h-[18px] mb-6 relative overflow-hidden">
                 <svg width="597" height="19" viewBox="0 0 597 19" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-0 top-0 max-w-none">
                   <path d="M0.00927734 17.3629C0.00927734 17.3629 92.8515 19.246 109.984 17.3629C127.117 15.4798 135.712 7.76365 139.009 0.199799C137.311 9.7717 143.332 17.4814 157.922 17.3629C172.512 17.2443 596.509 17.3629 596.509 17.3629" stroke="black" />

@@ -1,50 +1,123 @@
 "use client";
 
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 
-const services = [
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+interface Service {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  logo: string;
+  list: string[];
+}
+
+const services: Service[] = [
   {
     id: 1,
-    title: "Branding & Design",
-    description: "We create visually compelling designs that strengthen your brand identity and communication.",
-    image: "/branding.png",
-    logo: "/branding-logo.svg",
+    title: "Academic Scrolls",
+    description: "At the heart of every graduation is recognition. We specialize in crafting high-quality academic scrolls and certificates that reflect the prestige of your institution.",
+    image: "/academic-bg.png",
+    logo: "/academic-logo.svg",
     list: [
-      "Professional Logo Design",
-      "Social Media Post & Campaign Creatives",
-      "Poster & Cover Design",
-      "Tute Cover Design for Educational Classes"
+      "Graduation Scroll Design & Printing",
+      "Premium Materials & Finishing",
+      "Custom Branding for Institutes",
+      "Bulk Production at Competitive Rates"
     ]
   },
   {
     id: 2,
-    title: "Printing & Production",
-    description: "High-quality printing solutions tailored for both businesses and institutions.",
-    image: "/printing.png",
-    logo: "/printing-logo.svg",
+    title: "360° Rotating Video Experience",
+    description: "Create a memorable and shareable experience for your students with our 360° rotating video platform perfect for capturing dynamic graduation moments.",
+    image: "/rotating-bg.png",
+    logo: "/rotating-logo.svg",
     list: [
-      "Academic Scrolls & Certificates",
-      "Flyer & Banner Printing",
-      "Corporate & Wedding Invitation Design",
-      "Custom Merchandise (Mugs, Photo Frames & More)"
+      "Full 360° Rotating Platform Setup",
+      "Instant Video Capture & Effects",
+      "Social Media Ready Content",
+      "Ideal for Student Engagement & Branding"
     ]
   },
   {
     id: 3,
-    title: "Media & Content Creation",
-    description: "Modern content solutions designed to increase engagement and visibility.",
-    image: "/content-creation.png",
-    logo: "/content-creation-logo.svg",
+    title: "Stage Backdrops & LED Displays",
+    description: "Transform your graduation ceremony with visually impactful stage setups and large-format displays.",
+    image: "/stage-bg.png",
+    logo: "/stage-logo.svg",
     list: [
-      "Professional Photography",
-      "Promotional & Commercial Videography",
-      "Video Editing Services",
-      "Social Media Content Production"
+      "Custom Stage Backdrops (20x10 / 40x10)",
+      "6x3 LED Screen Installations",
+      "Full Stage Branding & Design",
+      "Professional Setup & Support"
+    ]
+  },
+  {
+    id: 4,
+    title: "Medals & Recognition Items",
+    description: "Recognize excellence with professionally designed medals and award items tailored for academic ceremonies.",
+    image: "/medals-bg.png",
+    logo: "/medals-logo.svg",
+    list: [
+      "Custom Metal Medals",
+      "Engraved Award Plates",
+      "Branded Ribbons",
+      "Bulk Production for Events"
+    ]
+  },
+  {
+    id: 5,
+    title: "Graduation Stoles & Garlands",
+    description: "Enhance your ceremony with elegant graduation stoles designed to match your institution’s identity.",
+    image: "/graduation-bg.png",
+    logo: "/graduation-logo.svg",
+    list: [
+      "Satin Graduation Stoles/flags",
+      "Custom Logo & Name Printing",
+      "Color Variations for Courses",
+      "Bulk Orders Available"
+    ]
+  },
+  {
+    id: 6,
+    title: "Graduation Frames & Certificate Holders",
+    description: "Preserve and showcase academic achievements with professionally designed certificate frames and display solutions.",
+    image: "/frames-bg.png",
+    logo: "/frames-logo.svg",
+    list: [
+      "Custom Certificates and Frames",
+      "Scroll Display Holders",
+      "Branded Photo Frames for Graduates",
+      "Bulk Orders for Institutions"
     ]
   }
 ];
+
+const CustomArrow = ({ direction }: { direction: 'prev' | 'next' }) => (
+  <button
+    id={direction === 'prev' ? 'services-prev' : 'services-next'}
+    className={`absolute top-1/2 -translate-y-1/2 z-40 bg-white/90 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] w-12 h-12 rounded-full flex items-center justify-center border-none cursor-pointer transition-all hover:scale-110 active:scale-95 group overflow-hidden ${direction === 'prev' ? '-left-6' : '-right-6'}`}
+  >
+    <svg 
+      width="24" 
+      height="24" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+      className={direction === 'next' ? 'rotate-180' : ''}
+    >
+      <path d="M15 18L9 12L15 6" stroke="#1C398E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  </button>
+);
 
 export default function Services() {
   return (
@@ -81,13 +154,54 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="flex flex-nowrap lg:grid lg:grid-cols-3 gap-8 overflow-x-auto w-full pb-10 snap-x snap-mandatory hide-scrollbar">
-          {services.map((service) => (
-            <ServiceCard key={service.id} service={service} />
-          ))}
+        {/* Swiper Implementation */}
+        <div className="relative w-full">
+          <Swiper
+            modules={[Pagination, Autoplay, Navigation]}
+            spaceBetween={30}
+            slidesPerView={3}
+            navigation={{
+              prevEl: '#services-prev',
+              nextEl: '#services-next',
+            }}
+            loop={true}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true
+            }}
+            breakpoints={{
+              320: {
+                slidesPerView: 1.1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2.1,
+                spaceBetween: 30,
+              },
+              1200: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              }
+            }}
+            className="services-swiper !px-4 !py-10"
+          >
+            {services.map((service) => (
+              <SwiperSlide key={service.id}>
+                <ServiceCard service={service} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Navigation arrows */}
+          <CustomArrow direction="prev" />
+          <CustomArrow direction="next" />
         </div>
 
-        <button className="mt-8 px-8 py-3 rounded-[10px] border border-white text-white font-normal text-[19px] hover:bg-white hover:text-[#070030] transition-colors">
+        <button 
+          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          className="mt-8 px-8 py-3 rounded-[10px] border border-white text-white font-normal text-[19px] hover:bg-white hover:text-[#070030] transition-colors"
+        >
           Get Free Advice Now!
         </button>
       </motion.div>
@@ -95,12 +209,12 @@ export default function Services() {
   );
 }
 
-function ServiceCard({ service }: { service: any }) {
+function ServiceCard({ service }: { service: Service }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
-      className="relative w-[340px] md:w-[360px] h-[480px] md:h-[542px] rounded-[25px] overflow-hidden flex-shrink-0 snap-center group cursor-pointer"
+      className="relative w-full h-[542px] rounded-[25px] overflow-hidden group cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -116,7 +230,7 @@ function ServiceCard({ service }: { service: any }) {
       </div>
 
       <motion.div
-        className="absolute bottom-0 left-0 w-[90%] rounded-b-[25px] drop-shadow-[0_-5px_15px_rgba(0,0,0,0.1)] overflow-hidden"
+        className="absolute bottom-0 left-0 w-[92%] rounded-b-[25px] drop-shadow-[0_-5px_15px_rgba(0,0,0,0.1)] overflow-hidden"
         initial={{ height: "135px" }}
         animate={{ height: isHovered ? "470px" : "135px" }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
