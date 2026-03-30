@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 
@@ -51,6 +51,46 @@ const DividerIcon = ({ stroke = "white", opacity = 0.2 }) => (
 );
 
 export default function Testimonials() {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const splitContainerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const splitWordVariants: Variants = {
+    hidden: { y: "120%", opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 25 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
+
   return (
     <section id="testimonials" className="relative w-full bg-[#070030] py-20 overflow-hidden font-inter">
       <div
@@ -65,35 +105,66 @@ export default function Testimonials() {
 
       <div className="max-w-[1440px] mx-auto z-10 relative">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           className="flex flex-col items-center mb-16 px-6 text-center"
         >
-          <div className="bg-[#171C55] rounded-full px-8 py-2 border border-white/5 mb-8">
+          <motion.div variants={itemVariants} className="bg-[#171C55] rounded-full px-8 py-2 border border-white/5 mb-8">
             <span className="text-white font-medium text-[18px] md:text-[21px] tracking-wide">
               • What Our Clients Say •
             </span>
-          </div>
+          </motion.div>
 
-          <h2 className="text-center text-white font-medium text-[36px] md:text-[45px] leading-tight capitalize max-w-[963px] mb-6">
-            Real Experiences <span className="font-libre-baskerville italic text-[#FFFFFF]">From Institutes And Businesses Across Sri Lanka.</span>
-          </h2>
-          <p className="text-center font-normal text-[16px] md:text-[20px] leading-[1.6] max-w-[683px] text-[#FFFFFF99]">
-            Our clients trust us for delivering consistent quality, affordable pricing, and dependable service.
-          </p>
+          <motion.h2 
+            variants={splitContainerVariants}
+            className="text-center text-white font-medium text-[36px] md:text-[45px] leading-tight capitalize max-w-[963px] mb-6"
+          >
+            {"Real Experiences".split(" ").map((word, index) => (
+              <span key={`line1-${index}`} className="inline-flex overflow-hidden pb-2">
+                <motion.span variants={splitWordVariants} className="inline-block">
+                  {word}
+                </motion.span>
+                &nbsp;
+              </span>
+            ))}
+            <span className="font-libre-baskerville italic text-[#FFFFFF]">
+              {"From Institutes And Businesses Across Sri Lanka.".split(" ").map((word, index) => (
+                <span key={`line2-${index}`} className="inline-flex overflow-hidden pb-2">
+                  <motion.span variants={splitWordVariants} className="inline-block">
+                    {word}
+                  </motion.span>
+                  &nbsp;
+                </span>
+              ))}
+            </span>
+          </motion.h2>
+          <motion.p 
+            variants={splitContainerVariants}
+            className="text-center font-normal text-[16px] md:text-[20px] leading-[1.6] max-w-[683px] text-[#FFFFFF99]"
+          >
+            {"Our clients trust us for delivering consistent quality, affordable pricing, and dependable service.".split(" ").map((word, index) => (
+              <span key={`desc-${index}`} className="inline-flex overflow-hidden pb-1">
+                <motion.span variants={splitWordVariants} className="inline-block">
+                  {word}
+                </motion.span>
+                &nbsp;
+              </span>
+            ))}
+          </motion.p>
         </motion.div>
 
-        <div className="w-full relative overflow-hidden">
+        <motion.div variants={itemVariants} className="w-full relative overflow-hidden">
           <div className="max-w-[1920px] mx-auto">
             <Swiper
               modules={[Pagination, Autoplay, Navigation]}
               spaceBetween={40}
               centeredSlides={true}
               loop={true}
+              speed={1200}
               autoplay={{
-                delay: 6000,
+                delay: 8000,
                 disableOnInteraction: false,
               }}
               pagination={{
@@ -193,9 +264,9 @@ export default function Testimonials() {
               ))}
             </Swiper>
 
-            <div className="custom-pagination flex justify-center gap-4 mt-16" />
+            <motion.div variants={itemVariants} className="custom-pagination flex justify-center gap-4 mt-16" />
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <style jsx global>{`

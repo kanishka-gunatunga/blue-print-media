@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, Navigation } from 'swiper/modules';
@@ -120,6 +120,46 @@ const CustomArrow = ({ direction }: { direction: 'prev' | 'next' }) => (
 );
 
 export default function Services() {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const splitContainerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const splitWordVariants: Variants = {
+    hidden: { y: "120%", opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   return (
     <section id="services" className="relative w-full min-h-screen bg-[#070030] py-20 overflow-hidden font-inter">
       <div
@@ -133,29 +173,59 @@ export default function Services() {
       />
 
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
         className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-[123px] flex flex-col items-center"
       >
         {/* Header */}
         <div className="flex flex-col items-center gap-7 mb-16 text-center">
-          <div className="bg-[#171C55] rounded-full px-8 py-2 border border-white/5">
+          <motion.div variants={itemVariants} className="bg-[#171C55] rounded-full px-8 py-2 border border-white/5">
             <span className="text-white font-medium text-[21px] tracking-wide">
               • Our Services •
             </span>
-          </div>
-          <h2 className="text-white font-medium text-[40px] md:text-[45px] leading-[1.1] capitalize">
-            Our Creative & <span className="font-libre-baskerville italic">Printing Service</span>
-          </h2>
-          <p className="text-white/60 font-normal text-[18px] md:text-[20px] max-w-[683px] leading-[1.5]">
-            Blueprint Media provides a complete range of creative, printing, and media solutions to support your brand growth.
-          </p>
+          </motion.div>
+          <motion.h2 
+            variants={splitContainerVariants}
+            className="text-white font-medium text-[40px] md:text-[45px] leading-[1.1] capitalize"
+          >
+            {"Our Creative &".split(" ").map((word, index) => (
+              <span key={`line1-${index}`} className="inline-flex overflow-hidden pb-1">
+                <motion.span variants={splitWordVariants} className="inline-block">
+                  {word}
+                </motion.span>
+                &nbsp;
+              </span>
+            ))}
+            <span className="font-libre-baskerville italic">
+              {"Printing Service".split(" ").map((word, index) => (
+                <span key={`line2-${index}`} className="inline-flex overflow-hidden pb-1">
+                  <motion.span variants={splitWordVariants} className="inline-block">
+                    {word}
+                  </motion.span>
+                  &nbsp;
+                </span>
+              ))}
+            </span>
+          </motion.h2>
+          <motion.p 
+            variants={splitContainerVariants}
+            className="text-white/60 font-normal text-[18px] md:text-[20px] max-w-[683px] leading-[1.5]"
+          >
+            {"Blueprint Media provides a complete range of creative, printing, and media solutions to support your brand growth.".split(" ").map((word, index) => (
+              <span key={`desc-${index}`} className="inline-flex overflow-hidden pb-1">
+                <motion.span variants={splitWordVariants} className="inline-block">
+                  {word}
+                </motion.span>
+                &nbsp;
+              </span>
+            ))}
+          </motion.p>
         </div>
 
         {/* Swiper Implementation */}
-        <div className="relative w-full">
+        <motion.div variants={itemVariants} className="relative w-full">
           <Swiper
             modules={[Pagination, Autoplay, Navigation]}
             spaceBetween={30}
@@ -196,14 +266,15 @@ export default function Services() {
           {/* Custom Navigation arrows */}
           <CustomArrow direction="prev" />
           <CustomArrow direction="next" />
-        </div>
+        </motion.div>
 
-        <button 
+        <motion.button 
+          variants={itemVariants}
           onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           className="mt-8 px-8 py-3 rounded-[10px] border border-white text-white font-normal text-[19px] hover:bg-white hover:text-[#070030] transition-colors"
         >
           Get Free Advice Now!
-        </button>
+        </motion.button>
       </motion.div>
     </section>
   );
