@@ -82,21 +82,72 @@ export default function Contact() {
     }
   };
 
+  interface FormErrors {
+    name?: string;
+    email?: string;
+    service?: string;
+    message?: string;
+  }
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     service: '',
     message: ''
   });
+  const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
+  const validateForm = () => {
+    const newErrors: FormErrors = {};
+    
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    if (!formData.service) {
+      newErrors.service = 'Please select a service';
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Clear error when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: undefined
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
     setStatus('loading');
     setErrorMessage('');
 
@@ -230,62 +281,83 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full">
 
-                <div className="flex flex-col w-full border-b border-black/20 pb-2">
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Name *"
-                    className="w-full bg-transparent font-inter font-normal text-[19px] leading-[31px] text-black outline-none placeholder:text-black/60 focus:placeholder:opacity-0 transition-opacity"
-                    required
-                    disabled={status === 'loading'}
-                  />
+                <div className="flex flex-col w-full">
+                  <label className="font-inter font-medium text-[15px] text-black/60 mb-2 flex items-center gap-1">
+                    Name <span className="text-red-500 font-bold">*</span>
+                  </label>
+                  <div className={`flex flex-col w-full border-b pb-2 transition-colors duration-300 ${errors.name ? 'border-red-500' : 'border-black/20'}`}>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Enter your name"
+                      className="w-full bg-transparent font-inter font-normal text-[19px] leading-[31px] text-black outline-none placeholder:text-black/30 focus:placeholder:opacity-0 transition-opacity"
+                      disabled={status === 'loading'}
+                    />
+                  </div>
+                  {errors.name && <span className="text-red-500 text-sm mt-1">{errors.name}</span>}
                 </div>
 
-                <div className="flex flex-col w-full border-b border-black/20 pb-2">
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Email *"
-                    className="w-full bg-transparent font-inter font-normal text-[19px] leading-[31px] text-black outline-none placeholder:text-black/60 focus:placeholder:opacity-0 transition-opacity"
-                    required
-                    disabled={status === 'loading'}
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col w-full border-b border-black/20 pb-2 mt-4 relative">
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="w-full bg-transparent font-inter font-normal text-[19px] leading-[31px] text-black outline-none appearance-none cursor-pointer"
-                  disabled={status === 'loading'}
-                >
-                  <option value="" disabled className="text-black/60">Service</option>
-                  <option value="printing">Printing Solutions</option>
-                  <option value="design">Graphic Design</option>
-                  <option value="branding">Brand Identity</option>
-                  <option value="other">Other</option>
-                </select>
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <ChevronDown className="w-5 h-5 text-black" strokeWidth={2} />
+                <div className="flex flex-col w-full">
+                  <label className="font-inter font-medium text-[15px] text-black/60 mb-2 flex items-center gap-1">
+                    Email <span className="text-red-500 font-bold">*</span>
+                  </label>
+                  <div className={`flex flex-col w-full border-b pb-2 transition-colors duration-300 ${errors.email ? 'border-red-500' : 'border-black/20'}`}>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="Enter your email"
+                      className="w-full bg-transparent font-inter font-normal text-[19px] leading-[31px] text-black outline-none placeholder:text-black/30 focus:placeholder:opacity-0 transition-opacity"
+                      disabled={status === 'loading'}
+                    />
+                  </div>
+                  {errors.email && <span className="text-red-500 text-sm mt-1">{errors.email}</span>}
                 </div>
               </div>
 
-              <div className="flex flex-col w-full border-b border-black/20 pb-2 mt-4">
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Message"
-                  required
-                  className="w-full bg-transparent font-inter font-normal text-[19px] leading-[31px] text-black outline-none resize-none min-h-[120px] placeholder:text-black/60 focus:placeholder:opacity-0 transition-opacity"
-                  disabled={status === 'loading'}
-                />
+              <div className="flex flex-col w-full mt-4">
+                <label className="font-inter font-medium text-[15px] text-black/60 mb-2 flex items-center gap-1">
+                  Service <span className="text-red-500 font-bold">*</span>
+                </label>
+                <div className={`flex flex-col w-full border-b pb-2 relative transition-colors duration-300 ${errors.service ? 'border-red-500' : 'border-black/20'}`}>
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="w-full bg-transparent font-inter font-normal text-[19px] leading-[31px] text-black outline-none appearance-none cursor-pointer"
+                    disabled={status === 'loading'}
+                  >
+                    <option value="" disabled className="text-black/30">Select a Service</option>
+                    <option value="printing">Printing Solutions</option>
+                    <option value="design">Graphic Design</option>
+                    <option value="branding">Brand Identity</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
+                    <ChevronDown className={`w-5 h-5 transition-colors duration-300 ${errors.service ? 'text-red-500' : 'text-black'}`} strokeWidth={2} />
+                  </div>
+                </div>
+                {errors.service && <span className="text-red-500 text-sm mt-1">{errors.service}</span>}
+              </div>
+
+              <div className="flex flex-col w-full mt-4">
+                <label className="font-inter font-medium text-[15px] text-black/60 mb-2 flex items-center gap-1">
+                  Message <span className="text-red-500 font-bold">*</span>
+                </label>
+                <div className={`flex flex-col w-full border-b pb-2 transition-colors duration-300 ${errors.message ? 'border-red-500' : 'border-black/20'}`}>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Enter your message"
+                    className="w-full bg-transparent font-inter font-normal text-[19px] leading-[31px] text-black outline-none resize-none min-h-[120px] placeholder:text-black/30 focus:placeholder:opacity-0 transition-opacity"
+                    disabled={status === 'loading'}
+                  />
+                </div>
+                {errors.message && <span className="text-red-500 text-sm mt-1">{errors.message}</span>}
               </div>
 
               {status === 'success' && (

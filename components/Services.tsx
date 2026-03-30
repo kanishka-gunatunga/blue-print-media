@@ -106,15 +106,15 @@ const CustomArrow = ({ direction }: { direction: 'prev' | 'next' }) => (
     id={direction === 'prev' ? 'services-prev' : 'services-next'}
     className={`absolute top-1/2 -translate-y-1/2 z-40 bg-white/90 shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] w-12 h-12 rounded-full flex items-center justify-center border-none cursor-pointer transition-all hover:scale-110 active:scale-95 group overflow-hidden ${direction === 'prev' ? '-left-6' : '-right-6'}`}
   >
-    <svg 
-      width="24" 
-      height="24" 
-      viewBox="0 0 24 24" 
-      fill="none" 
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={direction === 'next' ? 'rotate-180' : ''}
     >
-      <path d="M15 18L9 12L15 6" stroke="#1C398E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M15 18L9 12L15 6" stroke="#1C398E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   </button>
 );
@@ -186,7 +186,7 @@ export default function Services() {
               • Our Services •
             </span>
           </motion.div>
-          <motion.h2 
+          <motion.h2
             variants={splitContainerVariants}
             className="text-white font-medium text-[40px] md:text-[45px] leading-[1.1] capitalize"
           >
@@ -209,7 +209,7 @@ export default function Services() {
               ))}
             </span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             variants={splitContainerVariants}
             className="text-white/60 font-normal text-[18px] md:text-[20px] max-w-[683px] leading-[1.5]"
           >
@@ -268,7 +268,7 @@ export default function Services() {
           <CustomArrow direction="next" />
         </motion.div>
 
-        <motion.button 
+        <motion.button
           variants={itemVariants}
           onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           className="mt-8 px-8 py-3 rounded-[10px] border border-white text-white font-normal text-[19px] hover:bg-white hover:text-[#070030] transition-colors"
@@ -316,7 +316,7 @@ function ServiceCard({ service }: { service: Service }) {
           className="absolute top-0 left-0 w-full h-auto z-0"
         />
 
-        <div className="p-8 h-full flex flex-col relative z-20">
+        <div className="p-8 pr-12 h-full flex flex-col relative z-20">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-[45px] h-[45px] relative flex-shrink-0 flex items-center justify-center">
               <Image
@@ -327,7 +327,7 @@ function ServiceCard({ service }: { service: Service }) {
                 className="object-contain"
               />
             </div>
-            <h3 className="font-inter font-semibold text-[20px] md:text-[23px] text-[#070030] leading-tight">
+            <h3 className="font-inter font-semibold break-words text-[20px] md:text-[21px] text-[#070030] leading-[1.5]">
               {service.title}
             </h3>
           </div>
