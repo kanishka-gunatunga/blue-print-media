@@ -333,7 +333,7 @@ function ServiceCard({ service }: { service: Service }) {
           </div>
 
           <div
-            className={`flex flex-col gap-5 flex-1 pr-2 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+            className={`flex flex-col gap-5 flex-1 pr-2 overflow-y-auto custom-scrollbar min-h-0 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
           >
             <div className="w-full flex justify-center py-2 opacity-30 shrink-0">
               <svg width="597" height="19" viewBox="0 0 597 19" fill="none" xmlns="http://www.w3.org/2000/svg">

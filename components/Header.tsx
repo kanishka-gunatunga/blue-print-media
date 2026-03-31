@@ -8,8 +8,8 @@ import { MapPin, Menu, Phone, X } from "lucide-react";
 const navItems = [
   { label: "Home", href: "#home" },
   { label: "About us", href: "#about-us" },
-  { label: "About the CEO", href: "#about-ceo" },
   { label: "Services", href: "#services" },
+  { label: "About the CEO", href: "#about-ceo" },
   { label: "Testimonials", href: "#testimonials" },
 ];
 

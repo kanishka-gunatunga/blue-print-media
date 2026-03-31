@@ -8,3 +8,17 @@
 html {
   scroll-behavior: smooth;
 }
+
+@layer utilities {
+  .custom-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, and Opera */
+  }
+}
