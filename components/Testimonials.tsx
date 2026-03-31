@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -51,6 +51,9 @@ const DividerIcon = ({ stroke = "white", opacity = 0.2 }) => (
 );
 
 export default function Testimonials() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [swiperInstance, setSwiperInstance] = useState<any>(null);
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -117,7 +120,7 @@ export default function Testimonials() {
             </span>
           </motion.div>
 
-          <motion.h2 
+          <motion.h2
             variants={splitContainerVariants}
             className="text-center text-white font-medium text-[36px] md:text-[45px] leading-tight capitalize max-w-[963px] mb-6"
           >
@@ -140,7 +143,7 @@ export default function Testimonials() {
               ))}
             </span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             variants={splitContainerVariants}
             className="text-center font-normal text-[16px] md:text-[20px] leading-[1.6] max-w-[683px] text-[#FFFFFF99]"
           >
@@ -167,10 +170,8 @@ export default function Testimonials() {
                 delay: 8000,
                 disableOnInteraction: false,
               }}
-              pagination={{
-                clickable: true,
-                el: '.custom-pagination',
-              }}
+              onSwiper={setSwiperInstance}
+              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
               breakpoints={{
                 320: {
                   slidesPerView: 1.1,
@@ -264,7 +265,16 @@ export default function Testimonials() {
               ))}
             </Swiper>
 
-            <motion.div variants={itemVariants} className="custom-pagination flex justify-center gap-4 mt-16" />
+            <motion.div variants={itemVariants} className="custom-pagination flex justify-center gap-4 mt-16">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => swiperInstance?.slideToLoop(i)}
+                  className={`swiper-pagination-bullet ${activeIndex % testimonials.length === i ? 'swiper-pagination-bullet-active' : ''}`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </motion.div>
           </div>
         </motion.div>
       </div>
@@ -294,10 +304,6 @@ export default function Testimonials() {
           background: #FFFFFF;
           border-radius: 11.5556px;
           transform: none;
-        }
-
-        .custom-pagination .swiper-pagination-bullet:nth-child(n+4) {
-          display: none;
         }
       `}</style>
     </section>

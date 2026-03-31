@@ -167,12 +167,20 @@ export default function Hero() {
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
-                <button className="w-[146px] h-[48px] bg-[#0E519D] rounded-[10px] text-white font-inter font-medium text-[16px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)] hover:bg-[#0c407c] transition-all hover:scale-105">
+                <a 
+                  href="tel:+94707076991"
+                  className="w-[146px] h-[48px] bg-[#0E519D] rounded-[10px] text-white font-inter font-medium text-[16px] flex items-center justify-center shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)] hover:bg-[#0c407c] transition-all hover:scale-105"
+                >
                   Call Now
-                </button>
-                <button className="w-[146px] h-[48px] bg-[#0E519D] rounded-[10px] text-white font-inter font-medium text-[16px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)] hover:bg-[#0c407c] transition-all hover:scale-105">
+                </a>
+                <a 
+                  href="https://wa.me/94707076991"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-[146px] h-[48px] bg-[#0E519D] rounded-[10px] text-white font-inter font-medium text-[16px] flex items-center justify-center shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)] hover:bg-[#0c407c] transition-all hover:scale-105"
+                >
                   WhatsApp Us
-                </button>
+                </a>
               </div>
             </motion.div>
           </AnimatePresence>
