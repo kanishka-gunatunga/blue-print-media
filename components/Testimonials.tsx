@@ -219,9 +219,9 @@ export default function Testimonials() {
 
                       <div className={`
                         relative flex flex-col justify-between flex-1
-                        p-8 md:p-12
+                        px-8 py-5 md:p-8 lg:p-12
                       `}>
-                        <div className="flex-1 flex items-center mb-6 md:mb-0">
+                        <div className="flex-1 flex items-center mb-4 md:mb-0 overflow-y-auto custom-scrollbar min-h-0">
                           <p className={`
                             font-inter font-normal text-[16px] md:text-[18px] leading-[1.6]
                             ${isActive ? 'text-[#666666]' : 'text-white/80'}
