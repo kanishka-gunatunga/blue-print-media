@@ -62,7 +62,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="hidden lg:block lg:col-span-2"></div>
+          <div className="hidden lg:block lg:col-span-1"></div>
 
           <div className="md:col-span-3 lg:col-span-2 flex flex-col gap-6">
             <h3 className="font-bold text-[20px] leading-[28px] text-white">
@@ -86,15 +86,18 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-3 lg:col-span-3 flex flex-col gap-6">
+          <div className="md:col-span-3 lg:col-span-4 flex flex-col gap-6">
             <h3 className="font-bold text-[20px] leading-[28px] text-white">
               Our Services
             </h3>
             <ul className="flex flex-col gap-3">
               {[
-                { name: 'Branding & Design', href: '#services' },
-                { name: 'Printing & Production', href: '#services' },
-                { name: 'Media & Content Creation', href: '#services' }
+                { name: 'Academic Scrolls', href: '#services' },
+                { name: '360° Rotating Video Experience', href: '#services' },
+                { name: 'Stage Backdrops & LED Displays', href: '#services' },
+                { name: 'Medals & Recognition Items', href: '#services' },
+                { name: 'Graduation Stoles & Garlands', href: '#services' },
+                { name: 'Graduation Frames & Certificate Holders', href: '#services' }
               ].map((service) => (
                 <li key={service.name}>
                   <Link href={service.href} className="font-normal text-[16px] leading-[24px] text-[#CECECE] hover:text-white transition-colors">
