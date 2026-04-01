@@ -196,16 +196,16 @@ export default function Testimonials() {
                 <SwiperSlide key={`${item.id}-${index}`} className="transition-all duration-700">
                   {({ isActive }) => (
                     <div className={`
-                      relative rounded-[25px] flex flex-col md:flex-row transition-all duration-700 overflow-hidden
-                      mx-auto w-full max-w-[950px] h-auto md:h-[400px] min-h-[580px] md:min-h-0
+                      relative rounded-[25px] flex flex-col lg:flex-row transition-all duration-700 overflow-hidden
+                      mx-auto w-full max-w-[950px] h-auto lg:h-[400px] min-h-[580px] lg:min-h-0
                       ${isActive
                         ? 'bg-white shadow-[0_20px_50px_rgba(0,0,0,0.25)] scale-100 z-10'
                         : 'bg-[#151D4B] scale-[0.85] opacity-100'
                       }
                     `}>
 
-                      <div className="relative w-full md:w-[40%] h-[220px] md:h-full shrink-0">
-                        <div className="absolute inset-[20px] md:inset-[24px] rounded-[18px] overflow-hidden">
+                      <div className="relative w-full lg:w-[40%] h-[300px] md:h-[380px] lg:h-full shrink-0">
+                        <div className="absolute inset-[20px] lg:inset-[24px] rounded-[18px] overflow-hidden">
                           <Image
                             src={item.image}
                             alt={item.author}
@@ -221,9 +221,9 @@ export default function Testimonials() {
                         relative flex flex-col justify-between flex-1
                         px-8 py-5 md:p-8 lg:p-12
                       `}>
-                        <div className="flex-1 flex items-center mb-4 md:mb-0 overflow-y-auto custom-scrollbar min-h-0">
+                        <div className="flex-1 mb-4 md:mb-0 overflow-y-auto custom-scrollbar min-h-0">
                           <p className={`
-                            font-inter font-normal text-[16px] md:text-[18px] leading-[1.6]
+                            font-inter font-normal text-[16px] md:text-[18px]
                             ${isActive ? 'text-[#666666]' : 'text-white/80'}
                           `}>
                             {item.quote}
