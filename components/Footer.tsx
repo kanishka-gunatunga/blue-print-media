@@ -112,19 +112,16 @@ export default function Footer() {
 
         <div className="w-full flex flex-col md:flex-row justify-between items-center py-6 border-t border-[#D1D5DC]/30 gap-6">
           <div className="flex items-center gap-4">
-            <Link href="#" className="text-white hover:text-[#0E519D] transition-colors" aria-label="Facebook">
+            <Link href="https://www.facebook.com/share/17AHJN7qXc/" target="_blank" className="text-white hover:text-[#0E519D] transition-colors" aria-label="Facebook">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
             </Link>
-            <Link href="#" className="text-white hover:text-[#0E519D] transition-colors" aria-label="X">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15.2716 1.58643H18.0828L11.9411 8.606L19.1663 18.1581H13.509L9.07804 12.3648L4.00796 18.1581H1.19503L7.7642 10.6498L0.833008 1.58643H6.63393L10.6392 6.8817L15.2716 1.58643ZM14.2849 16.4754H15.8427L5.7875 3.1807H4.11589L14.2849 16.4754Z" />
-              </svg>
-            </Link>
-            <Link href="#" className="text-white hover:text-[#0E519D] transition-colors" aria-label="LinkedIn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
-            </Link>
-            <Link href="#" className="text-white hover:text-[#0E519D] transition-colors" aria-label="Instagram">
+            <Link href="https://www.instagram.com/blueprintmedia.lk" target="_blank" className="text-white hover:text-[#0E519D] transition-colors" aria-label="Instagram">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
+            </Link>
+            <Link href="https://www.tiktok.com/@blueprintmedia.lk?_r=1&_t=ZS-95C66BjPc5B" target="_blank" className="text-white hover:text-[#0E519D] transition-colors" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M16.6 5.82s.51.5 0 0A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48" />
+              </svg>
             </Link>
           </div>
 

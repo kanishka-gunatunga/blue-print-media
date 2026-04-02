@@ -51,7 +51,7 @@ const services: Service[] = [
     id: 3,
     title: "Stage Backdrops & LED Displays",
     description: "Transform your graduation ceremony with visually impactful stage setups and large-format displays.",
-    image: "/stage-bg.png",
+    image: "/stage.png",
     logo: "/stage-logo.svg",
     list: [
       "Custom Stage Backdrops (20x10 / 40x10)",

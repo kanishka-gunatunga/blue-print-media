@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Menu, Phone, X } from "lucide-react";
+import { Mail, MapPin, Menu, Phone, X } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -22,12 +22,17 @@ export default function Header() {
       <div className="w-full bg-[#070030] text-white py-2 flex flex-col sm:flex-row items-center justify-center sm:justify-end px-4 sm:px-6 lg:px-[123px] font-medium text-[12px] sm:text-[14px] md:text-base gap-1 sm:gap-6 tracking-wide">
         <div className="flex items-center gap-2">
           <Phone size={14} className="sm:w-4 sm:h-4 text-white" />
-          <span>+94 70 707 6991</span>
+          <a href="tel:+94707076991" className="hover:underline">+94 70 707 6991</a>
         </div>
         <div className="flex items-center gap-2">
           <MapPin size={14} className="sm:w-4 sm:h-4 text-white" />
           <span className="truncate">Yakkala, Sri Lanka
           </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Mail size={14} className="sm:w-4 sm:h-4 text-white" />
+          <a href="mailto:info@blueprintmedia.lk" className="truncate hover:underline">info@blueprintmedia.lk
+          </a>
         </div>
       </div>
 

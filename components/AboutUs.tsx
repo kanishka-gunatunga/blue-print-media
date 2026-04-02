@@ -111,7 +111,7 @@ export default function AboutUs() {
           <motion.div variants={imageVariants} className="w-full lg:w-[559px] flex-shrink-0 lg:flex lg:flex-col">
             <div className="relative w-full aspect-[559/679] lg:aspect-auto lg:flex-1 rounded-[22.23px] overflow-hidden shadow-sm lg:min-h-[679px]">
               <Image
-                src="/about-us.png"
+                src="/about.png"
                 alt="About Blueprint Media"
                 fill
                 sizes="(max-width: 1024px) 100vw, 559px"

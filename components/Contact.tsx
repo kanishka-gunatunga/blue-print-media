@@ -1,7 +1,8 @@
 "use client"
 import React, { useState } from 'react';
-import { MapPin, Share2, ChevronDown, Phone } from 'lucide-react';
+import { MapPin, Share2, ChevronDown, Phone, Mail } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
+import Link from 'next/link';
 
 const ContactInfoCard = ({
   icon: Icon,
@@ -55,8 +56,8 @@ export default function Contact() {
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 25 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.8, ease: "easeOut" }
     }
@@ -101,7 +102,7 @@ export default function Contact() {
 
   const validateForm = () => {
     const newErrors: FormErrors = {};
-    
+
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
     } else if (formData.name.trim().length < 2) {
@@ -131,7 +132,7 @@ export default function Contact() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    
+
     // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({
@@ -143,7 +144,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -201,7 +202,7 @@ export default function Contact() {
               • Get in Touch With Us •
             </span>
           </div>
-          <motion.h2 
+          <motion.h2
             variants={splitContainerVariants}
             className="font-libre-baskerville italic font-normal text-[36px] md:text-[45px] leading-tight text-center text-black capitalize"
           >
@@ -214,7 +215,7 @@ export default function Contact() {
               </span>
             ))}
           </motion.h2>
-          <motion.p 
+          <motion.p
             variants={splitContainerVariants}
             className="font-inter font-normal text-[18px] md:text-[20px] leading-[31px] text-center text-black/60"
           >
@@ -229,7 +230,7 @@ export default function Contact() {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-[100px] mt-12">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-[100px] mt-12 justify-center justify-items-center">
 
           <motion.div variants={itemVariants} className="flex flex-col gap-6 w-full max-w-[650px]">
 
@@ -247,34 +248,35 @@ export default function Contact() {
               </motion.div>
             </div>
 
-            <motion.div variants={itemVariants}>
-              <ContactInfoCard icon={Share2} title="Follow Us" className="w-full">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 w-full">
-                  <div className="flex items-center gap-4">
-                    <a href="#" className="hover:opacity-70 transition-opacity">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 0H5C2.239 0 0 2.239 0 5V19C0 21.761 2.239 24 5 24H19C21.761 24 24 21.761 24 19V5C24 2.239 21.761 0 19 0ZM8 19H5V8H8V19ZM6.5 6.732C5.534 6.732 4.75 5.942 4.75 4.968C4.75 3.994 5.534 3.204 6.5 3.204C7.466 3.204 8.25 3.994 8.25 4.968C8.25 5.942 7.466 6.732 6.5 6.732ZM20 19H17V13.396C17 10.028 13 10.283 13 13.396V19H10V8H13V9.765C14.396 7.179 20 6.988 20 12.241V19Z" />
-                      </svg>
-                    </a>
-                    <a href="#" className="hover:opacity-70 transition-opacity">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18.244 2.25H21.552L14.325 10.51L22.827 21.75H16.17L10.956 14.933L4.99 21.75H1.68L9.41 12.915L1.254 2.25H8.08L12.793 8.481L18.244 2.25ZM17.083 19.774H18.916L7.084 4.126H5.117L17.083 19.774Z" />
-                      </svg>
-                    </a>
-                    <a href="#" className="hover:opacity-70 transition-opacity">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M24 12.073C24 5.405 18.627 0 12 0C5.373 0 0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24V15.562H7.078V12.073H10.125V9.412C10.125 6.387 11.916 4.717 14.657 4.717C15.97 4.717 17.344 4.953 17.344 4.953V7.935H15.83C14.34 7.935 13.875 8.868 13.875 9.829V12.073H17.203L16.671 15.562H13.875V24C19.612 23.094 24 18.1 24 12.073Z" />
-                      </svg>
-                    </a>
-                    <a href="#" className="hover:opacity-70 transition-opacity">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2.163C15.204 2.163 15.584 2.175 16.85 2.233C18.016 2.286 18.647 2.479 19.068 2.643C19.626 2.86 20.024 3.123 20.442 3.541C20.86 3.959 21.123 4.357 21.34 4.915C21.504 5.336 21.697 5.967 21.75 7.133C21.808 8.399 21.82 8.779 21.82 11.983C21.82 15.187 21.808 15.567 21.75 16.833C21.697 17.999 21.504 18.63 21.34 19.051C21.123 19.609 20.86 20.007 20.442 20.425C20.024 20.843 19.626 21.106 19.068 21.323C18.647 21.487 18.016 21.68 16.85 21.733C15.584 21.791 15.204 21.803 12 21.803C8.796 21.803 8.416 21.791 7.15 21.733C5.984 21.68 5.353 21.487 4.932 21.323C4.374 21.106 3.976 20.843 3.558 20.425C3.14 20.007 2.877 19.609 2.66 19.051C2.496 18.63 2.303 17.999 2.25 16.833C2.192 15.567 2.18 15.187 2.18 11.983C2.18 8.779 2.192 8.399 2.25 7.133C2.303 5.967 2.496 5.336 2.66 4.915C2.877 4.357 3.14 3.959 3.558 3.541C3.976 3.123 4.374 2.86 4.932 2.643C5.353 2.479 5.984 2.286 7.15 2.233C8.416 2.175 8.796 2.163 12 2.163ZM12 0C8.741 0 8.333 0.014 7.053 0.072C5.775 0.131 4.903 0.334 4.14 0.63C3.352 0.936 2.686 1.339 2.023 2.002C1.36 2.665 0.957 3.331 0.651 4.119C0.355 4.882 0.152 5.754 0.094 7.032C0.035 8.312 0.021 8.72 0.021 11.979C0.021 15.238 0.035 15.646 0.094 16.926C0.152 18.204 0.355 19.076 0.651 19.839C0.957 20.627 1.36 21.293 2.023 21.956C2.686 22.619 3.352 23.022 4.14 23.328C4.903 23.624 5.775 23.827 7.053 23.886C8.333 23.944 8.741 23.958 12 23.958C15.259 23.958 15.667 23.944 16.947 23.886C18.225 23.827 19.097 23.624 19.86 23.328C20.648 23.022 21.314 22.619 21.977 21.956C22.64 21.293 23.043 20.627 23.349 19.839C23.645 19.076 23.848 18.204 23.906 16.926C23.965 15.646 23.979 15.238 23.979 11.979C23.979 8.72 23.965 8.312 23.906 7.032C23.848 5.754 23.645 4.882 23.349 4.119C23.043 3.331 22.64 2.665 21.977 2.002C21.314 1.339 20.648 0.936 19.86 0.63C19.097 0.334 18.225 0.131 16.947 0.072C15.667 0.014 15.259 0 12 0ZM12 5.838C8.618 5.838 5.86 8.596 5.86 11.979C5.86 15.362 8.618 18.12 12 18.12C15.382 18.12 18.14 15.362 18.14 11.979C18.14 8.596 15.382 5.838 12 5.838ZM12 15.957C9.805 15.957 8.023 14.175 8.023 11.979C8.023 9.783 9.805 8.001 12 8.001C14.195 8.001 15.977 9.783 15.977 11.979C15.977 14.175 14.195 15.957 12 15.957ZM18.406 4.14C17.611 4.14 16.965 4.786 16.965 5.581C16.965 6.376 17.611 7.022 18.406 7.022C19.201 7.022 19.847 6.376 19.847 5.581C19.847 4.786 19.201 4.14 18.406 4.14Z" />
-                      </svg>
-                    </a>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+              <motion.div variants={itemVariants}>
+                <ContactInfoCard icon={Share2} title="Follow Us" className="w-full">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 w-full">
+                    <div className="flex items-center gap-4">
+                      <Link href="https://www.facebook.com/share/17AHJN7qXc/" target='blank' className="hover:opacity-70 transition-opacity">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M24 12.073C24 5.405 18.627 0 12 0C5.373 0 0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24V15.562H7.078V12.073H10.125V9.412C10.125 6.387 11.916 4.717 14.657 4.717C15.97 4.717 17.344 4.953 17.344 4.953V7.935H15.83C14.34 7.935 13.875 8.868 13.875 9.829V12.073H17.203L16.671 15.562H13.875V24C19.612 23.094 24 18.1 24 12.073Z" />
+                        </svg>
+                      </Link>
+                      <Link href="https://www.instagram.com/blueprintmedia.lk" target='blank' className="hover:opacity-70 transition-opacity">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 2.163C15.204 2.163 15.584 2.175 16.85 2.233C18.016 2.286 18.647 2.479 19.068 2.643C19.626 2.86 20.024 3.123 20.442 3.541C20.86 3.959 21.123 4.357 21.34 4.915C21.504 5.336 21.697 5.967 21.75 7.133C21.808 8.399 21.82 8.779 21.82 11.983C21.82 15.187 21.808 15.567 21.75 16.833C21.697 17.999 21.504 18.63 21.34 19.051C21.123 19.609 20.86 20.007 20.442 20.425C20.024 20.843 19.626 21.106 19.068 21.323C18.647 21.487 18.016 21.68 16.85 21.733C15.584 21.791 15.204 21.803 12 21.803C8.796 21.803 8.416 21.791 7.15 21.733C5.984 21.68 5.353 21.487 4.932 21.323C4.374 21.106 3.976 20.843 3.558 20.425C3.14 20.007 2.877 19.609 2.66 19.051C2.496 18.63 2.303 17.999 2.25 16.833C2.192 15.567 2.18 15.187 2.18 11.983C2.18 8.779 2.192 8.399 2.25 7.133C2.303 5.967 2.496 5.336 2.66 4.915C2.877 4.357 3.14 3.959 3.558 3.541C3.976 3.123 4.374 2.86 4.932 2.643C5.353 2.479 5.984 2.286 7.15 2.233C8.416 2.175 8.796 2.163 12 2.163ZM12 0C8.741 0 8.333 0.014 7.053 0.072C5.775 0.131 4.903 0.334 4.14 0.63C3.352 0.936 2.686 1.339 2.023 2.002C1.36 2.665 0.957 3.331 0.651 4.119C0.355 4.882 0.152 5.754 0.094 7.032C0.035 8.312 0.021 8.72 0.021 11.979C0.021 15.238 0.035 15.646 0.094 16.926C0.152 18.204 0.355 19.076 0.651 19.839C0.957 20.627 1.36 21.293 2.023 21.956C2.686 22.619 3.352 23.022 4.14 23.328C4.903 23.624 5.775 23.827 7.053 23.886C8.333 23.944 8.741 23.958 12 23.958C15.259 23.958 15.667 23.944 16.947 23.886C18.225 23.827 19.097 23.624 19.86 23.328C20.648 23.022 21.314 22.619 21.977 21.956C22.64 21.293 23.043 20.627 23.349 19.839C23.645 19.076 23.848 18.204 23.906 16.926C23.965 15.646 23.979 15.238 23.979 11.979C23.979 8.72 23.965 8.312 23.906 7.032C23.848 5.754 23.645 4.882 23.349 4.119C23.043 3.331 22.64 2.665 21.977 2.002C21.314 1.339 20.648 0.936 19.86 0.63C19.097 0.334 18.225 0.131 16.947 0.072C15.667 0.014 15.259 0 12 0ZM12 5.838C8.618 5.838 5.86 8.596 5.86 11.979C5.86 15.362 8.618 18.12 12 18.12C15.382 18.12 18.14 15.362 18.14 11.979C18.14 8.596 15.382 5.838 12 5.838ZM12 15.957C9.805 15.957 8.023 14.175 8.023 11.979C8.023 9.783 9.805 8.001 12 8.001C14.195 8.001 15.977 9.783 15.977 11.979C15.977 14.175 14.195 15.957 12 15.957ZM18.406 4.14C17.611 4.14 16.965 4.786 16.965 5.581C16.965 6.376 17.611 7.022 18.406 7.022C19.201 7.022 19.847 6.376 19.847 5.581C19.847 4.786 19.201 4.14 18.406 4.14Z" />
+                        </svg>
+                      </Link>
+                      <Link href="https://www.tiktok.com/@blueprintmedia.lk?_r=1&_t=ZS-95C66BjPc5B" target='blank' className="hover:opacity-70 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16.6 5.82s.51.5 0 0A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48" /></svg>
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </ContactInfoCard>
-            </motion.div>
+                </ContactInfoCard>
+              </motion.div>
+
+              <motion.div variants={itemVariants}>
+                <ContactInfoCard icon={Mail} title="Email">
+                  info@blueprintmedia.lk
+                </ContactInfoCard>
+              </motion.div>
+            </div>
           </motion.div>
 
           <motion.div variants={itemVariants} className="flex flex-col w-full max-w-[617px] gap-6 pt-4 lg:pt-0">

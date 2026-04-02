@@ -129,7 +129,7 @@ export default function AboutCEO() {
                 Dasitha Medis is a seasoned digital marketing strategist and business leader with over 15 years of experience across marketing, technology, and brand development.
               </motion.p>
 
-              <motion.ul 
+              <motion.ul
                 variants={containerVariants}
                 className="flex flex-col gap-4 mt-2 mb-2"
               >
@@ -144,7 +144,7 @@ export default function AboutCEO() {
                   },
                   {
                     title: "Diploma in Information Technology",
-                    desc: "Staffordshire University, UK (2011)"
+                    desc: "Asia Pacific Institute of Information Technology - Sri Lanka"
                   }
                 ].map((edu, index) => (
                   <motion.li key={index} variants={itemVariants} className="flex gap-4">
