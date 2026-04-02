@@ -38,7 +38,7 @@ const services: Service[] = [
     id: 2,
     title: "360° Rotating Video Experience",
     description: "Create a memorable and shareable experience for your students with our 360° rotating video platform perfect for capturing dynamic graduation moments.",
-    image: "/rotating-bg.png",
+    image: "/360-camera.jpg",
     logo: "/rotating-logo.svg",
     list: [
       "Full 360° Rotating Platform Setup",
