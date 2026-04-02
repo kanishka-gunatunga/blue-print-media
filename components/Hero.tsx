@@ -151,9 +151,9 @@ export default function Hero() {
               </div>
 
 
-              <div className="w-full h-[18px] mb-6 relative overflow-hidden">
-                <svg width="597" height="19" viewBox="0 0 597 19" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-0 top-0 max-w-none">
-                  <path d="M0.00927734 17.3629C0.00927734 17.3629 92.8515 19.246 109.984 17.3629C127.117 15.4798 135.712 7.76365 139.009 0.199799C137.311 9.7717 143.332 17.4814 157.922 17.3629C172.512 17.2443 596.509 17.3629 596.509 17.3629" stroke="black" />
+              <div className="w-full h-[24px] mt-[-2px] mb-[4px] relative overflow-hidden">
+                <svg width="1500" height="24" viewBox="0 0 1500 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-0 top-0 max-w-none">
+                  <path d="M0.00927734 17.3629C0.00927734 17.3629 92.8515 19.246 109.984 17.3629C127.117 15.4798 135.712 7.76365 139.009 0.199799C137.311 9.7717 143.332 17.4814 157.922 17.3629C172.512 17.2443 1500 17.3629 1500 17.3629" stroke="black" />
                 </svg>
               </div>
 
