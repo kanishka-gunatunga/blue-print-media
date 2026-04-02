@@ -22,10 +22,10 @@ const testimonials = [
   },
   {
     id: 2,
-    quote: "“We are highly impressed with the services provided by Blueprint Media for our graduation ceremony. The academic scrolls and medals were crafted with great precision and high-quality finishing that truly honored our students' achievements.”",
-    author: "Dr. Nadun Alagiyawanna",
-    position: "Chairman, Needs Campus",
-    image: "/testimonial.jpg",
+    quote: "“Dasitha possesses a rare ability to transform complex concepts into flawlessly executed events. Through Blueprint Media, he delivers a level of strategic execution and creative vision that is truly world-class. I highly recommend his agency for any organization seeking excellence.”",
+    author: "Dr. Eranjan Padumadasa",
+    position: "Associate Professor in Business and Professional Development - Queen Mary University (UK)",
+    image: "/testimonial-1.jpg",
     stars: 5
   },
   {
