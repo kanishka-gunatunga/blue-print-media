@@ -56,7 +56,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col">
                   <span className="font-semibold text-[16px] leading-[24px] text-white">Location:</span>
-                  <span className="font-normal text-[16px] leading-[24px] text-[#CECECE]">Yakkala, Sri Lanka</span>
+                  <span className="font-normal text-[16px] leading-[24px] text-[#CECECE]">122/9, 1/2, Nuwara Road, Yakkala</span>
                 </div>
               </div>
             </div>

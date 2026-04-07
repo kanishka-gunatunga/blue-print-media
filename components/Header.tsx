@@ -26,7 +26,7 @@ export default function Header() {
         </div>
         <div className="flex items-center gap-2">
           <MapPin size={14} className="sm:w-4 sm:h-4 text-white" />
-          <span className="truncate">Yakkala, Sri Lanka
+          <span className="truncate">122/9, 1/2, Nuwara Road, Yakkala
           </span>
         </div>
         <div className="flex items-center gap-2">

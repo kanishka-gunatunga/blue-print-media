@@ -44,7 +44,7 @@ const services: Service[] = [
       "Full 360° Rotating Platform Setup",
       "Instant Video Capture & Effects",
       "Social Media Ready Content",
-      "Ideal for Student Engagement & Branding"
+      "Student-Centric Branding",
     ]
   },
   {
