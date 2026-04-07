@@ -237,7 +237,7 @@ export default function Contact() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
               <motion.div variants={itemVariants}>
                 <ContactInfoCard icon={MapPin} title="Address">
-                  Yakkala, Sri Lanka
+                    122/9, 1/2, Nuwara Road, Yakkala
                 </ContactInfoCard>
               </motion.div>
 
