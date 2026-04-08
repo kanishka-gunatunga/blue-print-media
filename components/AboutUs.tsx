@@ -130,7 +130,7 @@ export default function AboutUs() {
               </motion.p>
 
               <motion.h2 variants={itemVariants} className="font-inter font-medium text-[18px] md:text-[22px] leading-[1.2] md:leading-[60px] text-black mt-4">
-                Why Choose Us
+                Why Choose Us ?
               </motion.h2>
 
               <motion.ul
@@ -138,14 +138,14 @@ export default function AboutUs() {
                 className="flex flex-col gap-1 mt-0 pl-8"
               >
                 {[
-                  "15+ Years of Industry Experience",
-                  "Proven expertise in marketing, branding, and production",
-                  "Specialized in Educational Institutions",
-                  "Deep understanding of academic requirements and standards",
-                  "Premium Quality at Competitive Prices",
-                  "High-end output without premium pricing",
-                  "We respect your timelines and commitments",
-                  "Trusted by Businesses & Institutes"
+                  "15+ Years of Industry Experience.",
+                  "Proven expertise in marketing, branding, and production.",
+                  "Specialized in Educational Institutions.",
+                  "Deep understanding of academic requirements and standards.",
+                  "Premium Quality at Competitive Prices.",
+                  "High-end output without premium pricing.",
+                  "We respect your timelines and commitments.",
+                  "Trusted by Businesses & Institutes."
                 ].map((item, index) => (
                   <motion.li key={index} variants={itemVariants} className="flex gap-3">
                     <span>-</span> <span>{item}</span>

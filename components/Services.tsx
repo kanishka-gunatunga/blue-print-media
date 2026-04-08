@@ -213,7 +213,7 @@ export default function Services() {
             variants={splitContainerVariants}
             className="text-white/60 font-normal text-[18px] md:text-[20px] max-w-[683px] leading-[1.5]"
           >
-            {"Blueprint Media provides a complete range of creative, printing, and media solutions to support your brand growth.".split(" ").map((word, index) => (
+            {"Beyond scrolls, Blueprint Media provides a complete range of creative, printing, and media solutions to support your brand growth.".split(" ").map((word, index) => (
               <span key={`desc-${index}`} className="inline-flex overflow-hidden pb-1">
                 <motion.span variants={splitWordVariants} className="inline-block">
                   {word}

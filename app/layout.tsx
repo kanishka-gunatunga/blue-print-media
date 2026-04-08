@@ -16,10 +16,58 @@ const libreBaskerville = Libre_Baskerville({
 });
 
 export const metadata: Metadata = {
-  title: "Blueprint Media",
-  description: "The Architecture of Excellence.",
+  metadataBase: new URL("https://www.blueprintmedia.lk"),
+  title: {
+    default: "Blueprint Media | Premier Creative & Printing Agency in Sri Lanka",
+    template: "%s | Blueprint Media"
+  },
+  description: "Blueprint Media specializes in high-quality academic scrolls, certificate printing, 360° rotating video platforms, and premium branding solutions for educational institutions and businesses in Sri Lanka.",
+  keywords: ["academic scrolls", "graduation certificates", "360 video experience", "printing agency sri lanka", "branding solutions", "blueprint media"],
+  authors: [{ name: "Blueprint Media" }],
+  creator: "Blueprint Media",
+  publisher: "Blueprint Media",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.blueprintmedia.lk",
+    siteName: "Blueprint Media",
+    title: "Blueprint Media | Premier Creative & Printing Agency in Sri Lanka",
+    description: "Expert creative and printing solutions including academic scrolls, 360° video, and premium branding.",
+    images: [
+      {
+        url: "/blue-print-logo.png",
+        width: 800,
+        height: 600,
+        alt: "Blueprint Media Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blueprint Media | Premier Creative & Printing Agency in Sri Lanka",
+    description: "Expert creative and printing solutions including academic scrolls, 360° video, and premium branding.",
+    images: ["/blue-print-logo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
   },
 };
 
